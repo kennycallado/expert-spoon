@@ -1,0 +1,14 @@
+{
+  "GET": {
+    "/": {
+      "controller": "",
+      "action": ""
+    }
+  },
+  "POST": {
+    "/": {
+      "controller": "",
+      "action": ""
+    }
+  }
+}
