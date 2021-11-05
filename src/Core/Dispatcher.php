@@ -22,10 +22,10 @@ class Dispatcher
         $route = $this->currentRequest->getRoute();
 
         /* Ahora el routeList contiene [method][route] */
-        if (isset($this->routeList[$route])) {
-            $controllerClass = "App\\Controllers\\" . $this->routeList[$route]["controller"]; 
+        if (isset($this->routeList[$method][$route])) {
+            $controllerClass = "App\\Controllers\\" . $this->routeList[$method][$route]["controller"]; 
             $controller =  new $controllerClass; 
-            $action = $this->routeList[$route]["action"];
+            $action = $this->routeList[$method][$route]["action"];
 
             /* Si llega petición POST obtiene el body */
             /* y lo pasa como primer parámetro despues resto */
