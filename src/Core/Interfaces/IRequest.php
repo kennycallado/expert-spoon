@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Core\Interfaces;
 
-interface IRequest{
+interface IRequest
+{
   public function getRoute();
   public function getParams();
   /* nuevos métodos */
   public function getMethod();
-  public function getRequestBody();
+  public function getPostBody();
 }
