@@ -13,7 +13,7 @@ class Request implements IRequest
   function __construct()
   {
     /* limpia último carácter de la uri si tiene */
-    $this->uri = rtrim($_SERVER["REQUEST_URI"], "/");
+    $this->uri = $_SERVER["REQUEST_URI"] === "/" ? "/" : rtrim($_SERVER["REQUEST_URI"], "/");
     /* asegura verbos en mayúscula */
     $this->method =  strtoupper($_SERVER["REQUEST_METHOD"]);
 
