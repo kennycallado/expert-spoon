@@ -7,17 +7,18 @@ use App\Core\Interfaces\IRequest;
 class Request implements IRequest
 {
   private $route;
-  private $params;
-  /* nueva propiedad */
   private $method;
+  private $uri;
+
   function __construct()
   {
-    $rawRoute = $_SERVER["REQUEST_URI"];
-    $rawRouteElements = explode("/", $rawRoute);
-    /* guarda el método de la petición */
-    $this->method =  $_SERVER["REQUEST_METHOD"];
+    /* limpia último carácter de la uri si tiene */
+    $this->uri = rtrim($_SERVER["REQUEST_URI"], "/");
+    /* asegura verbos en mayúscula */
+    $this->method =  strtoupper($_SERVER["REQUEST_METHOD"]);
+
+    $rawRouteElements = explode("/", $this->uri);
     $this->route = "/" . $rawRouteElements[1];
-    $this->params = array_slice($rawRouteElements, 2);
   }
 
   public function getRoute()
@@ -25,19 +26,16 @@ class Request implements IRequest
     return $this->route;
   }
 
-  public function getParams()
-  {
-    return $this->params;
-  }
-
-  /* Nuevos métodos */
-  /* devuelve el metodo de la petición */
   public function getMethod()
   {
     return $this->method;
   }
 
-  /* devuelve el contenido de post */
+  public function getUri()
+  {
+    return $this->uri;
+  }
+
   public function getPostBody()
   {
     return $_POST;
