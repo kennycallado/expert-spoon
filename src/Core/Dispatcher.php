@@ -40,7 +40,8 @@ class Dispatcher
     $uri = $this->currentRequest->getUri();
 
     /* en caso de /:id y cosas así... tengo que manejar al final */
-    if ($uri === "/") $this->action($method, $route);
+    // if ($uri === "/") $this->action($method, $route);
+    /* Parece que no hace falta ??? */
 
     /* Itera por el array para cotejar */
     $uriArray = array_filter(explode("/", $uri));
