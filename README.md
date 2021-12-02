@@ -9,4 +9,5 @@
 ## Todo:
 
 - [ ] Ruta raiz _/_ no maneja variable.
-- [ ] Documentar mejor
+- [ ] Documentar mejor.
+- [ ] Base de datos con PDO.
